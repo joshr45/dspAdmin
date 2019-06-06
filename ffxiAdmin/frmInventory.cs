@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using MySql.Data;
 using System.Collections;
 using System.Globalization;
+using MySqlConnector;
 
 namespace dspAdmin
 {
     public partial class frmInventory : Form
     {
         public string chId = "";
-        bool inStartup = true;
-        MySqlConnection connection;
-        MySqlConnection connection2, connection3, connection4;
+        private MySqlConnection connection;
+        private MySqlConnection connection2;
+        private MySqlConnection connection3;
+
         public frmInventory(string charID, string charName, MySqlConnection conn)
         {
             InitializeComponent();
@@ -33,7 +28,7 @@ namespace dspAdmin
             //  connection.Open();
             ArrayList tables = new ArrayList();
             tables.AddRange(new object[] {
-                    "item_armor",
+                    "item_equipment",
                     "item_basic",
                     "item_furnishing",
                     "item_usable",
@@ -49,10 +44,10 @@ namespace dspAdmin
             while (myReader.Read())
             {
                 inventoryItem iItem = new inventoryItem();
-                iItem.id = Int32.Parse((myReader[0].ToString()), System.Globalization.NumberStyles.Integer);
-                iItem.location = Int32.Parse((myReader[1].ToString()), System.Globalization.NumberStyles.Integer);
+                iItem.id = Int32.Parse((myReader[0].ToString()), NumberStyles.Integer);
+                iItem.location = Int32.Parse((myReader[1].ToString()), NumberStyles.Integer);
                 //  iItem.item = (int)myReader[2];
-                iItem.quantity = Int32.Parse((myReader[2].ToString()), System.Globalization.NumberStyles.Integer);
+                iItem.quantity = Int32.Parse((myReader[2].ToString()), NumberStyles.Integer);
                 if (myReader[3].ToString() == "1")
                     iItem.bazaar = true;
                 else
@@ -62,7 +57,7 @@ namespace dspAdmin
                 // Determine what the item is and get it's info.
                 // There are 5 tables that hold item information
                 // and we have to find the table and then get the info
-                // item_armor, item_basic, item_furnishing, item_usable, item_weapon
+                // item_equipment, item_basic, item_furnishing, item_usable, item_weapon
                 // We want itemID, name
                 // I don't care about any other stats, characters can have stuff they can't equip or use, etc
                 // 12/18/11 -- I'm feeling lazy and going to do this the hard way (try each table)
@@ -99,8 +94,8 @@ namespace dspAdmin
                     string sqlItemLookup = "";
                     switch (inventoryTable)
                     {
-                        case "item_armor":
-                            sqlItemLookup = "select name, level from item_armor where itemID=" + iItem.id + ";";
+                        case "item_equipment":
+                            sqlItemLookup = "select name, level from item_equipment where itemID=" + iItem.id + ";";
                             break;
                         case "item_basic":
                             sqlItemLookup = "select name from item_basic where itemID=" + iItem.id + ";";
@@ -132,14 +127,14 @@ namespace dspAdmin
             myReader.Dispose();
             connection2.Close();
             connection3.Close();
-            connection2.Dispose();
-            connection3.Dispose();
+            //connection2.Dispose();     
+            //connection3.Dispose();  This caused Inventory drop down list to crash
             foreach (inventoryItem item in colItems)
             {
                 dgvCharInventory.Rows.Add(false, item.id, item.description, item.location, item.quantity);
             }
             //connection2.Open();
-            //MySqlCommand allItemsCmd = new MySqlCommand("Select name from item_armor, item_basic, item_furnishing, item_usable, item_weapon;", connection2);
+            //MySqlCommand allItemsCmd = new MySqlCommand("Select name from item_equipment, item_basic, item_furnishing, item_usable, item_weapon;", connection2);
             //MySqlDataReader myAllItemsReader = allItemsCmd.ExecuteReader();
             //ArrayList allItems = new ArrayList();
             //while (myAllItemsReader.Read())
@@ -192,8 +187,8 @@ namespace dspAdmin
             string sqlItems = "";
             switch (cmbItemType.Text)
             {
-                case "Armor":
-                    sqlItems = "select itemid,name from item_armor order by name;";
+                case "Equipment":
+                    sqlItems = "select itemid,name from item_equipment order by name;";
 
                     break;
                 case "Basic":
@@ -219,7 +214,7 @@ namespace dspAdmin
             while (myItemReader.Read())
             {
                 possibleItem pItem = new possibleItem();
-                pItem.id = Int32.Parse((myItemReader[0].ToString()), System.Globalization.NumberStyles.Integer);
+                pItem.id = Int32.Parse((myItemReader[0].ToString()), NumberStyles.Integer);
                 pItem.description = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(myItemReader[1].ToString().Replace('_', ' '));
                 colPossibleItems.add(pItem);
 
@@ -263,16 +258,20 @@ namespace dspAdmin
             // add it to the location and in quantity desired
             if (connection3.State == ConnectionState.Closed)
                 connection3.Open();
-            string sqlAddItem="";
-            int itemLoc=0;
+#pragma warning disable CS0168 // Variable is declared but never used
+            string sqlAddItem;
+#pragma warning restore CS0168 // Variable is declared but never used
+#pragma warning disable CS0219 // Variable is assigned but its value is never used
+            int itemLoc;
+#pragma warning restore CS0219 // Variable is assigned but its value is never used
             if (radInventory.Checked)
-            itemLoc=0;
+                itemLoc = 0;
             else if (radHouse.Checked)
-                itemLoc=1;
+                itemLoc = 1;
             else if (radSafe.Checked)
-                itemLoc=2;
+                itemLoc = 2;
             else if (radSatchel.Checked)
-                itemLoc=3;
+                itemLoc = 3;
             //foreach (string selectedItem in lbAllItems.SelectedItems)
             //{
 

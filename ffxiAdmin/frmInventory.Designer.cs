@@ -174,7 +174,7 @@
             // 
             this.cmbItemType.FormattingEnabled = true;
             this.cmbItemType.Items.AddRange(new object[] {
-            "Armor",
+            "Equipment",
             "Basic",
             "Furnishings",
             "Usable",

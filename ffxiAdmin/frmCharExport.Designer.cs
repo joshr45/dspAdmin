@@ -34,15 +34,12 @@
             this.chkChar_Stats = new System.Windows.Forms.CheckBox();
             this.chkChar_Spells = new System.Windows.Forms.CheckBox();
             this.chkChar_Style = new System.Windows.Forms.CheckBox();
-            this.chkChar_weapon_skill_points = new System.Windows.Forms.CheckBox();
             this.chkChar_Vars = new System.Windows.Forms.CheckBox();
-            this.chkChar_Titles = new System.Windows.Forms.CheckBox();
             this.chkChar_Storage = new System.Windows.Forms.CheckBox();
             this.chkChar_Skills = new System.Windows.Forms.CheckBox();
             this.chkChar_Profile = new System.Windows.Forms.CheckBox();
             this.chkChar_Points = new System.Windows.Forms.CheckBox();
             this.chkChar_inventory = new System.Windows.Forms.CheckBox();
-            this.chkChar_Pet_Name = new System.Windows.Forms.CheckBox();
             this.chkChar_pet = new System.Windows.Forms.CheckBox();
             this.chkChar_look = new System.Windows.Forms.CheckBox();
             this.chkChar_jobs = new System.Windows.Forms.CheckBox();
@@ -72,15 +69,12 @@
             this.groupBox1.Controls.Add(this.chkChar_Stats);
             this.groupBox1.Controls.Add(this.chkChar_Spells);
             this.groupBox1.Controls.Add(this.chkChar_Style);
-            this.groupBox1.Controls.Add(this.chkChar_weapon_skill_points);
             this.groupBox1.Controls.Add(this.chkChar_Vars);
-            this.groupBox1.Controls.Add(this.chkChar_Titles);
             this.groupBox1.Controls.Add(this.chkChar_Storage);
             this.groupBox1.Controls.Add(this.chkChar_Skills);
             this.groupBox1.Controls.Add(this.chkChar_Profile);
             this.groupBox1.Controls.Add(this.chkChar_Points);
             this.groupBox1.Controls.Add(this.chkChar_inventory);
-            this.groupBox1.Controls.Add(this.chkChar_Pet_Name);
             this.groupBox1.Controls.Add(this.chkChar_pet);
             this.groupBox1.Controls.Add(this.chkChar_look);
             this.groupBox1.Controls.Add(this.chkChar_jobs);
@@ -125,16 +119,6 @@
             this.chkChar_Style.Text = "Style";
             this.chkChar_Style.UseVisualStyleBackColor = true;
             // 
-            // chkChar_weapon_skill_points
-            // 
-            this.chkChar_weapon_skill_points.AutoSize = true;
-            this.chkChar_weapon_skill_points.Location = new System.Drawing.Point(191, 180);
-            this.chkChar_weapon_skill_points.Name = "chkChar_weapon_skill_points";
-            this.chkChar_weapon_skill_points.Size = new System.Drawing.Size(76, 17);
-            this.chkChar_weapon_skill_points.TabIndex = 15;
-            this.chkChar_weapon_skill_points.Text = "WS Points";
-            this.chkChar_weapon_skill_points.UseVisualStyleBackColor = true;
-            // 
             // chkChar_Vars
             // 
             this.chkChar_Vars.AutoSize = true;
@@ -144,16 +128,6 @@
             this.chkChar_Vars.TabIndex = 14;
             this.chkChar_Vars.Text = "Variables";
             this.chkChar_Vars.UseVisualStyleBackColor = true;
-            // 
-            // chkChar_Titles
-            // 
-            this.chkChar_Titles.AutoSize = true;
-            this.chkChar_Titles.Location = new System.Drawing.Point(191, 134);
-            this.chkChar_Titles.Name = "chkChar_Titles";
-            this.chkChar_Titles.Size = new System.Drawing.Size(51, 17);
-            this.chkChar_Titles.TabIndex = 13;
-            this.chkChar_Titles.Text = "Titles";
-            this.chkChar_Titles.UseVisualStyleBackColor = true;
             // 
             // chkChar_Storage
             // 
@@ -204,16 +178,6 @@
             this.chkChar_inventory.TabIndex = 8;
             this.chkChar_inventory.Text = "Inventory";
             this.chkChar_inventory.UseVisualStyleBackColor = true;
-            // 
-            // chkChar_Pet_Name
-            // 
-            this.chkChar_Pet_Name.AutoSize = true;
-            this.chkChar_Pet_Name.Location = new System.Drawing.Point(105, 88);
-            this.chkChar_Pet_Name.Name = "chkChar_Pet_Name";
-            this.chkChar_Pet_Name.Size = new System.Drawing.Size(73, 17);
-            this.chkChar_Pet_Name.TabIndex = 7;
-            this.chkChar_Pet_Name.Text = "Pet Name";
-            this.chkChar_Pet_Name.UseVisualStyleBackColor = true;
             // 
             // chkChar_pet
             // 
@@ -351,15 +315,12 @@
         private System.Windows.Forms.Label lblExportCharacter;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkEverything;
-        private System.Windows.Forms.CheckBox chkChar_weapon_skill_points;
         private System.Windows.Forms.CheckBox chkChar_Vars;
-        private System.Windows.Forms.CheckBox chkChar_Titles;
         private System.Windows.Forms.CheckBox chkChar_Storage;
         private System.Windows.Forms.CheckBox chkChar_Skills;
         private System.Windows.Forms.CheckBox chkChar_Profile;
         private System.Windows.Forms.CheckBox chkChar_Points;
         private System.Windows.Forms.CheckBox chkChar_inventory;
-        private System.Windows.Forms.CheckBox chkChar_Pet_Name;
         private System.Windows.Forms.CheckBox chkChar_pet;
         private System.Windows.Forms.CheckBox chkChar_look;
         private System.Windows.Forms.CheckBox chkChar_jobs;

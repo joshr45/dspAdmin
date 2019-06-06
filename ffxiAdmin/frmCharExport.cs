@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using MySql.Data;
-using System.Collections;
 using IniParser;
+using MySqlConnector;
 
 
 namespace dspAdmin

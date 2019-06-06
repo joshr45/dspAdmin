@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using MySql.Data;
 using System.Collections;
 using Microsoft.Win32;
 using System.Net;
-using System.Text.RegularExpressions;
+using MySqlConnector;
 
 namespace dspAdmin
 {
@@ -53,8 +49,8 @@ namespace dspAdmin
         bool freezeSelection = false;
         bool connected = false;
         bool inStartup = true;
-        private Image imgOffline = dspAdmin.Properties.Resources.imgOffline;
-        private Image imgOnline = dspAdmin.Properties.Resources.imgOnline;
+        private Image imgOffline = Properties.Resources.imgOffline;
+        private Image imgOnline = Properties.Resources.imgOnline;
         IPHostEntry remoteIP;
         ListSortDirection lsDirection;
 
