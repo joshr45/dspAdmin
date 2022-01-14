@@ -14,8 +14,12 @@ Thanks!
 
 v0.5.3
 A few things repaired, updated the title form to FFXI Administrator since DSP no longer exists which is sad. (leaving the namespace to dspadmin)
+
 SQL connector updated to work properly with .NET 4.5.2 
+
 Removed a bunch of redundant code.
+
 disabled the dispose of the connections(2,3) so that inventory list wouldn't crash out, should move the list up the code so this doesn't need a fix.
+
 Removed depreciated Tables and updated item_armor to item_equipment
 
