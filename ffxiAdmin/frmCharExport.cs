@@ -44,7 +44,6 @@ namespace dspAdmin
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            string query = "";
             FileIniDataParser saveData = new FileIniDataParser();
             IniParser.Model.IniData data = new IniParser.Model.IniData();
             foreach (Control c in groupBox1.Controls)
@@ -52,7 +51,7 @@ namespace dspAdmin
                 CheckBox current = c as CheckBox;
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                query = "Select * from " + current.Name.Remove(0, 3) + " where charid =" + charid;
+                string query = "Select * from " + current.Name.Remove(0, 3) + " where charid =" + charid;
                 MySqlCommand command = new MySqlCommand(query, connection);
                 MySqlDataReader reader = command.ExecuteReader();
                 DataTable dtreader = reader.GetSchemaTable();

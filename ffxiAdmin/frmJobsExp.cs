@@ -129,8 +129,8 @@ namespace dspAdmin
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
             bool updatedSomething = false;
-            string setSJ = "0";
             string gmMode = "";
+            string setSJ;
             if (chkSJ.Checked)
                 setSJ = "1";
             else

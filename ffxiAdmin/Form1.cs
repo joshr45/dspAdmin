@@ -81,9 +81,8 @@ namespace dspAdmin
             conn2 = conn.Clone();
             conn3 = conn.Clone();
             conn4 = conn.Clone();
-            string myZoneQuery="";
-                myZoneQuery = "Select zoneid,name from zone_settings;";
-            
+            string myZoneQuery = "Select zoneid,name from zone_settings;";
+
             MySqlCommand myZoneCmd = new MySqlCommand(myZoneQuery,conn);
             MySqlDataReader zoneReader = myZoneCmd.ExecuteReader();
             gameZones colGameZones=new gameZones();
@@ -105,7 +104,7 @@ namespace dspAdmin
             }
             zoneReader.Close();
             zoneReader.Dispose();
-            string myQuery = "";
+            string myQuery;
             if (chkShowOnlineOnly.Checked)
                 myQuery = "Select chars.charid,chars.accid,charname,pos_zone from chars inner join accounts_sessions on chars.charid=accounts_sessions.charid order by charid;";
             else
@@ -113,8 +112,7 @@ namespace dspAdmin
             MySqlCommand myCmd = new MySqlCommand(myQuery, conn);
             MySqlDataReader reader = myCmd.ExecuteReader();
             string foundZone="";
-            Image listImg=null;
-            int charcount=0;
+            int charcount = 0;
             int charOnline=0;
             while (reader.Read())
             {
@@ -130,6 +128,7 @@ namespace dspAdmin
 
                 MySqlCommand myCmd2 = new MySqlCommand(myQuery2, conn2);
                 string charIP = (string)myCmd2.ExecuteScalar();
+                Image listImg;
                 if (charIP != null)
                 {
                     listImg = imgOnline;
@@ -161,7 +160,7 @@ namespace dspAdmin
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = "DSP Administrator v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(5,2);
+            Text = "FFXI Administrator v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Remove(5,2);
             RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\DSAdmin\\");
             if (regKey.GetValue("ServerName") != null)
                 txtServerName.Text = regKey.GetValue("ServerName").ToString();
@@ -395,9 +394,9 @@ namespace dspAdmin
 
         private void refreshChat()
         {
-            string chatQuery = "";
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
+            string chatQuery;
             if (txtCharListRefreshValue.Text != null)
                 chatQuery = "select type, lsname, speaker, recipient, CONVERT(message using utf8), datetime from audit_chat order by datetime desc limit " + txtShowMessages.Text + ";";
             else

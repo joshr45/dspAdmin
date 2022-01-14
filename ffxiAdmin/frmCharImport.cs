@@ -25,10 +25,9 @@ namespace dspAdmin
         {
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
-            string query = "";
             string columns = "";
             string values = "";
-            query = "select max(charid) from chars";
+            string query = "select max(charid) from chars";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             int nextCharID = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Dispose();
@@ -59,7 +58,6 @@ namespace dspAdmin
             List<string> controls = new List<string>();
             foreach (Control c in groupBox1.Controls)
             {
-                CheckBox current = c as CheckBox;
                 controls.Add(c.Name.Remove(0, 3));
             }
             FileIniDataParser readFile = new FileIniDataParser();
